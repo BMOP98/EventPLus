@@ -15,7 +15,7 @@ const Clshall = () => {
     let { idclients } = useParams();
 
     const information = () => {
-        fetch("http://localhost:4008/apidatahall/" + idhalls)
+        fetch(process.env.GET_HALLS + "/" + idhalls)
             .then((response) => response.json())
             .then((data) => data.filter(varid => varid).map(filname => (
                 setName(filname.name),
@@ -42,7 +42,7 @@ const Clshall = () => {
         }else{
             const formattedDate = formatDate(eventDate);
             const state = "Pending";
-            const url1 = "http://localhost:4018/apireserve";
+            const url1 = process.env.CREATE_RESERVE;
             const response = await fetch(url1, {
                 method: 'POST',
                 headers: {
@@ -85,7 +85,7 @@ const Clshall = () => {
             <section className="main-content">
                 <div className="row max-inner">
                     <div className="columns col-4 product-media">
-                        <img src={'http://localhost:4009/apiimages/' + name} className="hall-image" alt={name} />
+                        <img src={'${process.env.GET_IMAGES}/' + name} className="hall-image" alt={name} />
                     </div>
                     <div className="columns col-6 product-info">
                         <h2>{name}</h2>

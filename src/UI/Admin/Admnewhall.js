@@ -17,7 +17,7 @@ const Admnewhall = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url1 = "http://localhost:4007/apinewhall";
+            const url1 = process.env.CREATE_HALL;
             const response = await fetch(url1, {
                 method: 'POST',
                 headers: {
@@ -36,7 +36,7 @@ const Admnewhall = () => {
                 const formData = new FormData();
                 formData.append('file', file);
                 formData.append('name', name_hall);
-                fetch('http://localhost:4009/apiimages', {
+                fetch(process.env.GET_IMAGES, {
                     method: 'POST',
                     body: formData
                 })

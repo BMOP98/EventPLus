@@ -7,7 +7,7 @@ const Admservices = () => {
     const navigate = useNavigate();
     const FetchData = async () => {
 
-        const resp = await fetch("http://localhost:4014/apidataservice");
+        const resp = await fetch(process.env.GET_SERVICES);
         const data1 = await resp.json();
         if (resp.ok) {
             setData(data1);   
@@ -49,7 +49,7 @@ const Admservices = () => {
                                                     <td>${filname.price}</td>
                                                     <td>{filname.description}</td>
                                                     <td>
-                                                        <img style={{ width: 'auto', height: 150 }} src={'http://localhost:4009/apiimages/' + filname.name} alt={filname.name} />
+                                                        <img style={{ width: 'auto', height: 150 }} src={'${process.env.GET_IMAGES}/' + filname.name} alt={filname.name} />
                                                     </td>
                                                     <td>
                                                         <a href={"/Admeditservice/" + filname.idservices} class="btn btn-primary">Edit</a>

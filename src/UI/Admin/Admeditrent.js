@@ -14,7 +14,7 @@ const Admeditrent = () => {
     useEffect(() => {
         const fetchRentData = async () => {
             try {
-                const response = await fetch(`http://localhost:4013/apieditrent/${idrents}`);
+                const response = await fetch(`${process.env.EDIT_RENT}/${idrents}`);
                 const rentData = await response.json();
                 setName(rentData.name);
                 setOriginalName(rentData.name); // Guardar el nombre original
@@ -36,7 +36,7 @@ const Admeditrent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url1 = "http://localhost:4013/apieditrent";
+            const url1 = process.env.EDIT_RENT;
             const response = await fetch(url1, {
                 method: 'POST',
                 headers: {
@@ -52,7 +52,7 @@ const Admeditrent = () => {
                     const formData = new FormData();
                     formData.append('file', selectedFile);
                     formData.append('name', name);
-                    await fetch('http://localhost:4009/apiimages', {
+                    await fetch(process.env.GET_IMAGES, {
                         method: 'POST',
                         body: formData
                     });
@@ -68,7 +68,7 @@ const Admeditrent = () => {
     const handleDelete = async () => {
         if (window.confirm("Are you sure you want to delete this rent?")) {
             try {
-                const url = `http://localhost:4013/apieditrent/${idrents}` + "/" + originalName;
+                const url = `${process.env.EDIT_RENT}/${idrents}` + "/" + originalName;
                 const response = await fetch(url, {
                     method: 'DELETE'
                 });

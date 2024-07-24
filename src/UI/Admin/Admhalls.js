@@ -7,7 +7,7 @@ const Admhalls = () => {
     const navigate = useNavigate();
     const FetchData = async () => {
 
-        const resp = await fetch("http://localhost:4008/apidatahall");
+        const resp = await fetch(process.env.GET_HALLS);
         const data1 = await resp.json();
         if (resp.ok) {
             setData(data1);   
@@ -53,7 +53,7 @@ const Admhalls = () => {
                                                     <td>{filname.capacity}</td>
                                                     <td>{filname.address}</td>
                                                     <td>
-                                                        <img style={{ width: 'auto', height: 150 }} src={'http://localhost:4009/apiimages/' + filname.name} alt={filname.name} />
+                                                        <img style={{ width: 'auto', height: 150 }} src={'${process.env.GET_IMAGES}/' + filname.name} alt={filname.name} />
                                                     </td>
                                                     <td>
                                                         <a href={"/Admedithall/" + filname.idhalls} class="btn btn-primary">Edit</a>

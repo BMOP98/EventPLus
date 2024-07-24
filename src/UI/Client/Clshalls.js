@@ -11,13 +11,13 @@ const Clshalls = () => {
     const [expandedHalls, setExpandedHalls] = useState([]);
 
     const FetchData = async () => {
-        const resp = await fetch("http://localhost:4008/apidatahall");
+        const resp = await fetch(process.env.GET_HALLS);
         const data1 = await resp.json();
         setData(data1);
     };
 
     const FetchFilteredData = async () => {
-        const resp = await fetch(`http://localhost:4008/apidatahall/${capacity}/${price}`);
+        const resp = await fetch(`${process.env.GET_HALLS}/${capacity}/${price}`);
         const data1 = await resp.json();
         if(resp.ok){
             setData(data1);
@@ -132,7 +132,7 @@ const Clshalls = () => {
                                     <div className="col-lg-3 col-md-6 col-sm-6 mix new-arrivals" key={hall._id}>
                                         <div className="product__item" onClick={() => toggleExpandHall(hall._id)}>
                                             <div className="product__item__pic set-bg">
-                                                <img style={{ width: 'auto', height: 275 }} src={`http://localhost:4009/apiimages/${hall.name}`} alt={hall.name} />
+                                                <img style={{ width: 'auto', height: 275 }} src={`${process.env.GET_IMAGES}/${hall.name}`} alt={hall.name} />
                                             </div>
                                             <div className="product__item__text">
                                                 <h6>{hall.name}</h6>

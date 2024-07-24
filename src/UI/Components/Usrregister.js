@@ -14,13 +14,13 @@ const Usrregister = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:4001/apiverify";
+      const url = process.env.VERIFY_INFORMATION;
       const verify = await fetch(url + "/" + mail);
       const mess = await verify.json();
       if (!verify.ok) {
         alert(mess);
       } else {
-        const url1 = "http://localhost:4002/apiregister";
+        const url1 = process.env.REGISTER_INFORMATION;
         const response = await fetch(url1, {
           method: 'POST',
           headers: {

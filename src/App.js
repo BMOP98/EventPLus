@@ -14,6 +14,11 @@ import Clsindex from './UI/Client/Clsindex';
 import Clsheader from './UI/Client/Clsheader';
 import Clshalls from './UI/Client/Clshalls';
 import Clshall from './UI/Client/Clshall';
+import Clsrentals from './UI/Client/Clsrentals';
+import Clsrental from './UI/Client/Clsrental';
+import Clsservices from './UI/Client/Clsservices';
+import Clsservice from './UI/Client/Clsservice';
+
 
 // Admin
 import Admheader from './UI/Admin/Admheader';
@@ -29,6 +34,7 @@ import Admnewservice from './UI/Admin/Admnewservice';
 import Admeditservice from './UI/Admin/Admeditservice';
 
 
+
 function App() {
   var item_varRoll = sessionStorage.getItem("item_rol");
 
@@ -39,6 +45,10 @@ function App() {
           <Route path="/Client" element={<><Clsheader/><Clsindex /></> } />
           <Route path="/Clshalls" element={<><Clsheader/><Clshalls /></>} />
           <Route path="/Clshall/:idhalls/:idclients" component={Clshall} element={<><Clsheader/><Clshall/></>}/>
+          <Route path="/Clsrentals" element={<><Clsheader/><Clsrentals /></>} />
+          <Route path="/Clsrental/:idrentals/:idclients" component={Clsrental} element={<><Clsheader/><Clsrental/></>}/>
+          <Route path="/Clsservices" element={<><Clsheader/><Clsservices /></>} />
+          <Route path="/Clsservice/:idservices/:idclients" component={Clsservice} element={<><Clsheader/><Clsservice/></>}/>
         </Routes>
       </div>
     </Router>

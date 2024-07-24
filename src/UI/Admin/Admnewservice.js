@@ -15,7 +15,7 @@ const Admnewservice = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url1 = "http://localhost:4015/apinewservice";
+            const url1 = process.env.CREATE_SERVICE;
             const response = await fetch(url1, {
                 method: 'POST',
                 headers: {
@@ -34,7 +34,7 @@ const Admnewservice = () => {
                 const formData = new FormData();
                 formData.append('file', file);
                 formData.append('name', name_service);
-                fetch('http://localhost:4009/apiimages', {
+                fetch(process.env.GET_IMAGES, {
                     method: 'POST',
                     body: formData
                 })

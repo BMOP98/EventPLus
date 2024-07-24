@@ -12,7 +12,7 @@ const Clsindex = () => {
 
     const Information = async () => {
         try {
-            const response = await fetch(`http://localhost:4005/apidatas/${item_valueid}`);
+            const response = await fetch(`${process.env.GET_INFORMATION}/${item_valueid}`);
             if (response.ok) {
                 const data1 = await response.json();
                 if (Array.isArray(data1)) {
@@ -26,7 +26,7 @@ const Clsindex = () => {
                 throw new Error('Error fetching information');
             }
 
-            const count = await fetch("http://localhost:4006/apicountclient/"+ item_valueid);
+            const count = await fetch(process.env.COUNT_INFORMATION1 + "/"+ item_valueid);
             const data2 = await count.json();
 
             if (count.ok) {

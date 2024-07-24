@@ -7,7 +7,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:4004/apilogin";
+    const url = process.env.LOGIN_USER;
     const response = await fetch(url + "/" + email + "/" + password);
     const message = await response.json();
     if (!response.ok) {

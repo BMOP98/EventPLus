@@ -15,7 +15,7 @@ const Admedithall = () => {
     useEffect(() => {
         const fetchHallData = async () => {
             try {
-                const response = await fetch(`http://localhost:4010/apiedithall/${idhalls}`);
+                const response = await fetch(`${process.env.EDIT_HALL}/${idhalls}`);
                 const hallData = await response.json();
                 setName(hallData.name);
                 setOriginalName(hallData.name); // Guardar el nombre original
@@ -38,7 +38,7 @@ const Admedithall = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url1 = "http://localhost:4010/apiedithall";
+            const url1 = process.env.EDIT_HALL;
             const response = await fetch(url1, {
                 method: 'POST',
                 headers: {
@@ -54,7 +54,7 @@ const Admedithall = () => {
                     const formData = new FormData();
                     formData.append('file', selectedFile);
                     formData.append('name', name);
-                    await fetch('http://localhost:4009/apiimages', {
+                    await fetch(process.env.GET_IMAGES, {
                         method: 'POST',
                         body: formData
                     });
@@ -70,7 +70,7 @@ const Admedithall = () => {
     const handleDelete = async () => {
         if (window.confirm("Are you sure you want to delete this hall?")) {
             try {
-                const url = `http://localhost:4010/apiedithall/${idhalls}` + "/" + originalName;
+                const url = `${process.env.EDIT_HALL}/${idhalls}` + "/" + originalName;
                 const response = await fetch(url, {
                     method: 'DELETE'
                 });

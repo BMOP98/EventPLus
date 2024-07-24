@@ -7,7 +7,7 @@ const Admindex = () => {
     const [data_hall, setHall] = useState("NONE");
 
     const fetchData = async () => {
-        const resp = await fetch("http://localhost:4006/apicount");
+        const resp = await fetch(process.env.COUNT_INFORMATION);
         const data1 = await resp.json();
         
         if(resp.ok){

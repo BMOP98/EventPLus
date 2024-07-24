@@ -13,7 +13,7 @@ const Admeditservice = () => {
     useEffect(() => {
         const fetchServiceData = async () => {
             try {
-                const response = await fetch(`http://localhost:4016/apieditservice/${idservices}`);
+                const response = await fetch(`${process.env.EDIT_SERVICE}/${idservices}`);
                 const serviceData = await response.json();
                 setName(serviceData.name);
                 setOriginalName(serviceData.name); // Guardar el nombre original
@@ -34,7 +34,7 @@ const Admeditservice = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url1 = "http://localhost:4016/apieditservice";
+            const url1 = process.env.EDIT_SERVICE;
             const response = await fetch(url1, {
                 method: 'POST',
                 headers: {
@@ -50,7 +50,7 @@ const Admeditservice = () => {
                     const formData = new FormData();
                     formData.append('file', selectedFile);
                     formData.append('name', name);
-                    await fetch('http://localhost:4009/apiimages', {
+                    await fetch(process.env.GET_IMAGES, {
                         method: 'POST',
                         body: formData
                     });
@@ -66,7 +66,7 @@ const Admeditservice = () => {
     const handleDelete = async () => {
         if (window.confirm("Are you sure you want to delete this service?")) {
             try {
-                const url = `http://localhost:4016/apieditservice/${idservices}` + "/" + originalName;
+                const url = `${process.env.EDIT_SERVICE}/${idservices}` + "/" + originalName;
                 const response = await fetch(url, {
                     method: 'DELETE'
                 });

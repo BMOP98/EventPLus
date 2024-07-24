@@ -31,7 +31,7 @@ const Clsheader = () => {
                             <li><Link to="/Client">Home</Link></li>
                             <li><Link to="/">My reservations</Link></li>
                             <li><Link to="/Clshalls">Halls</Link></li>
-                            <li><Link to="/">Rental</Link></li>
+                            <li><Link to="/Clsrentals">Rental</Link></li>
                             <li><Link to="/">Services</Link></li>
                             <li><Link to="/">Comments</Link></li>
                             <li><Link to="/">My count</Link></li>
