@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  front-end:
+    context: ..
+    dockerfile: ../Dockerfile
+    ports:
+      - 3000:3000
