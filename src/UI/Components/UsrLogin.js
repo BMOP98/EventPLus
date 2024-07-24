@@ -5,6 +5,8 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  console.log("-------------------");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = process.env.LOGIN_USER;
